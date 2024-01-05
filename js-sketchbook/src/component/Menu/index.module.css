@@ -2,7 +2,7 @@
     @apply absolute px-5 py-1 flex justify-between w-1/4 left-1/2 top-10 rounded-md;
     border: 2px solid theme('colors.border1');
     transform: translateX(-50%);
-    box-shadow: grey 2px 2px 2px 2px;
+    box-shadow: grey 2.5px 2.5px 2.5px 2.5px;
     background-color: theme('colors.background1');
 
     .iconWrapper {
