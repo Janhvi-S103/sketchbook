@@ -49,4 +49,5 @@ const Menu = () =>
                 </div>
             );
         }
+        
         export default Menu; // export Menu component
