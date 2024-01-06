@@ -1,10 +1,10 @@
-import  {useDispatch } from '@reduxjs/toolkit';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPencil, faEraser, faRotateLeft, faRotateRight, faFileArrowDown,faHighlighter,faMarker,faHandPointer} from '@fortawesome/free-solid-svg-icons';
 import styles from './index.module.css'
 import { MENU_ITEMS } from '@/constants';
 import { menuitemClick,actionitemClick } from '@/slice/menuSlice';
 import { handleActioItemClick } from '@/slice/menuSlice';
+import { useDispatch } from 'react-redux';
 
 /**
  * Renders a menu component.
@@ -17,9 +17,16 @@ import { handleActioItemClick } from '@/slice/menuSlice';
  * - Download icon wrapper
  */
 const Menu = () => 
-{
-    function handleMenuClick(itemname) {
-    }
+    {
+        const dispatch = useDispatch();
+    
+        const handleMenuClick = (itemName) => {
+            dispatch(menuItemClick(itemName))
+        }
+        const handleActioItemClick = (itemName) => {
+            dispatch(actionItemClick(itemName))
+        }
+   
     return (
                 <div className={styles.menuContainer}>
                     <div className= {styles.iconWrapper} onClick={ ()=> handleMenuClick(MENU_ITEMS.PENCIL)}>
