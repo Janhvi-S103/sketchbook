@@ -5,6 +5,8 @@ import { MENU_ITEMS } from '@/constants';
 import { menuitemClick,actionitemClick } from '@/slice/menuSlice';
 import { handleActioItemClick } from '@/slice/menuSlice';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import cx from 'classnames';
 
 /**
  * Renders a menu component.
@@ -19,23 +21,23 @@ import { useDispatch } from 'react-redux';
 const Menu = () => 
     {
         const dispatch = useDispatch();
-    
+        const activeMenuItem= useSelector(state => state.menu.activeMenuItem)
         const handleMenuClick = (itemName) => {
-            dispatch(menuItemClick(itemName))
+            dispatch(menuitemClick(itemName))
         }
         const handleActioItemClick = (itemName) => {
-            dispatch(actionItemClick(itemName))
+            dispatch(actionitemClick(itemName))
         }
    
     return (
                 <div className={styles.menuContainer}>
-                    <div className= {styles.iconWrapper} onClick={ ()=> handleMenuClick(MENU_ITEMS.PENCIL)}>
+                    <div className= {cx(styles.iconWrapper, {[styles.active]:activeMenuItem === MENU_ITEMS.PENCIL})} onClick={ ()=> handleMenuClick(MENU_ITEMS.PENCIL)}>
                         <FontAwesomeIcon icon={faPencil} className={styles.icon} />
                     </div>
-                    <div className= {styles.iconWrapper} onClick={ ()=> handleMenuClick(MENU_ITEMS.HIGHLIGHTER)}>
+                    <div className= {cx(styles.iconWrapper, {[styles.active]:activeMenuItem === MENU_ITEMS.HIGHLIGHTER})} onClick={ ()=> handleMenuClick(MENU_ITEMS.HIGHLIGHTER)}>
                         <FontAwesomeIcon icon={faHighlighter} className={styles.icon} />
                     </div>
-                    <div className= {styles.iconWrapper} onClick={ ()=> handleMenuClick(MENU_ITEMS.MARKER)}>
+                    <div className={cx(styles.iconWrapper, {[styles.active]:activeMenuItem === MENU_ITEMS.MARKER})} onClick={ ()=> handleMenuClick(MENU_ITEMS.MARKER)}>
                         <FontAwesomeIcon icon={faMarker} className={styles.icon} />
                     </div>
                     <div className= {styles.iconWrapper} onClick={ ()=> handleMenuClick(MENU_ITEMS.ERASER)}>
