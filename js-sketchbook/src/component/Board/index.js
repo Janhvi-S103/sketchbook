@@ -50,13 +50,13 @@ const Board = () => {
             shouldDraw.current = false
         }
         canvas.addEventListener('mousedown', handleMouseDown)
-        canvas.addEventListener('mouseMove', handleMouseMove)
-        canvas.addEventListener('mouseUp', handleMouseUp)
+        canvas.addEventListener('mousemove', handleMouseMove)
+        canvas.addEventListener('mouseup', handleMouseUp)
 
         return () => {
             canvas.removeEventListener('mousedown', handleMouseDown)
-            canvas.removeEventListener('mouseMove', handleMouseMove)
-            canvas.removeEventListener('mouseUp', handleMouseUp)
+            canvas.removeEventListener('mousemove', handleMouseMove)
+            canvas.removeEventListener('mouseup', handleMouseUp)
         }
     }, [])
 
