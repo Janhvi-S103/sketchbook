@@ -63,7 +63,13 @@ const Board = () => {
         if (!canvasRef.current) return
         const canvas = canvasRef.current;
         const context = canvas.getContext('2d');
-
+        context.globalAlpha = 1;
+        if(activeMenuItem === MENU_ITEMS.MARKER){
+            context.globalAlpha = 0.3;
+        }
+        if(activeMenuItem === MENU_ITEMS.HIGHLIGHTER){
+            context.globalAlpha = 0.02;
+        }
         const handleChangeConfig = (config) => {
             console.log("config", config)
             changeConfig(config.color, config.size)
@@ -86,7 +92,7 @@ const Board = () => {
         if (!canvasRef.current) return
         const canvas = canvasRef.current;
         const context = canvas.getContext('2d');
-
+        
         //when mounting
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -96,6 +102,7 @@ const Board = () => {
             context.moveTo(x,y)
         }
         const drawLine = (x,y) => { 
+            
             context.lineTo(x,y)
             context.stroke()
         }
