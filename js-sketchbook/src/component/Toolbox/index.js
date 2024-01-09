@@ -21,7 +21,7 @@ const Toolbox = () => {
         {showStrokeToolOptions && <div className={styles.toolItem}>
             <h4 className={styles.toolText}>Stroke Color</h4>
             <div className={styles.itemContainer}>
-                <div className={ cx(styles.colorBox, {[color === COLORS.BLACK] : styles.active})} style={{backgroundColor: COLORS.BLACK}} onClick={() =>UpdateColor(COLORS.BLACK) }/>
+                <div className={ cx(styles.colorBox, {[color === COLORS.BLACK] : styles.active})} style={{backgroundColor: COLORS.BLACK}} onClick={() =>UpdateColor(COLORS.BLACK) } />
                 <div className={ cx(styles.colorBox, {[color === COLORS.RED] : styles.active})}  style={{backgroundColor: COLORS.RED}} onClick={() =>UpdateColor(COLORS.RED) }/>
                 <div className={ cx(styles.colorBox, {[color === COLORS.GREEN] : styles.active})} style={{backgroundColor: COLORS.GREEN}} onClick={() =>UpdateColor(COLORS.GREEN) } />
                 <div className={ cx(styles.colorBox, {[color === COLORS.BLUE] : styles.active})} style={{backgroundColor: COLORS.BLUE}} onClick={() =>UpdateColor(COLORS.BLUE) }/>

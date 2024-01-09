@@ -103,6 +103,7 @@ const Board = () => {
             const imageData = context.getImageData(0,0,canvas.width,canvas.height)
             drawHistory.current.push(imageData)
             historyPointer.current= drawHistory.current.length -1
+            
         }
         canvas.addEventListener('mousedown', handleMouseDown)
         canvas.addEventListener('mousemove', handleMouseMove)
