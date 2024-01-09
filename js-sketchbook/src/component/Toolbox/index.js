@@ -42,10 +42,9 @@ const Toolbox = () => {
             </div>
         </div>}
         {showAlphaToolOptions && <div className={styles.toolItem}>
-            
             <h4 className={styles.toolText}>Alpha</h4>
             <div className={styles.itemContainer}>
-                <input type="range" min={1} max={15} step={1} onChange={UpdateAlpha} />
+                <input type="range" min={0} max={1} step={0.1} onChange={UpdateAlpha} />
             </div>
         </div>}
     </div>)
