@@ -61,6 +61,10 @@ const Board = () => {
             };
             input.click();
         }
+        else if (actionMenuItem === MENU_ITEMS.HANDPOINTER) {
+            canvas.style.cursor = 'grab'
+        }
+
         dispatch(actionitemClick(null))
      }, [actionMenuItem])
    
