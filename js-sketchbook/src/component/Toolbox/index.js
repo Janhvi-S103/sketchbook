@@ -2,12 +2,13 @@ import styles from './index.module.css'
 import { COLORS, MENU_ITEMS} from '@/constants'
 import cx from 'classnames'
 import { useSelector,useDispatch } from 'react-redux'
-import { changeColor,changeBrushSize } from '@/slice/toolBoxSlice'
+import { changeColor,changeBrushSize,changeAlpha } from '@/slice/toolBoxSlice'
 const Toolbox = () => {
     const dispatch = useDispatch();
     const activeMenuItem= useSelector(state => state.menu.activeMenuItem)
     const showStrokeToolOptions= activeMenuItem === MENU_ITEMS.PENCIL || activeMenuItem === MENU_ITEMS.HIGHLIGHTER || activeMenuItem === MENU_ITEMS.MARKER;
     const showBrushToolOptions=activeMenuItem === MENU_ITEMS.PENCIL || activeMenuItem === MENU_ITEMS.HIGHLIGHTER || activeMenuItem === MENU_ITEMS.MARKER || activeMenuItem === MENU_ITEMS.ERASER;
+    const showAlphaToolOptions=activeMenuItem === MENU_ITEMS.HIGHLIGHTER;
     const {color} = useSelector((state) => state.toolbox[activeMenuItem])
 
     const UpdateBrushSize = (e) => {
@@ -16,7 +17,9 @@ const Toolbox = () => {
     const UpdateColor = (newcolor) => {
         dispatch(changeColor({item : activeMenuItem, color : newcolor}))
     }
-
+ const UpdateAlpha = (e) => {
+    dispatch(changeAlpha ({item : activeMenuItem, alpha : e.target.value}))
+ }
     return (<div className={styles.toolboxContainer}>
         {showStrokeToolOptions && <div className={styles.toolItem}>
             <h4 className={styles.toolText}>Stroke Color</h4>
@@ -38,8 +41,15 @@ const Toolbox = () => {
                 <input type="range" min={1} max={15} step={1} onChange={UpdateBrushSize} />
             </div>
         </div>}
-        
+        {showAlphaToolOptions && <div className={styles.toolItem}>
+            
+            <h4 className={styles.toolText}>Alpha</h4>
+            <div className={styles.itemContainer}>
+                <input type="range" min={1} max={15} step={1} onChange={UpdateAlpha} />
+            </div>
+        </div>}
     </div>)
 }
+
 
 export default Toolbox;
