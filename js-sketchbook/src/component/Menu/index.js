@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPencil, faEraser, faRotateLeft, faRotateRight, faFileArrowDown,faHighlighter,faMarker,faHandPointer} from '@fortawesome/free-solid-svg-icons';
+import { faPencil, faEraser, faRotateLeft, faRotateRight, faFileArrowDown,faHighlighter,faMarker,faHandPointer,faFileArrowUp} from '@fortawesome/free-solid-svg-icons';
 import styles from './index.module.css'
 import { MENU_ITEMS } from '@/constants';
 import { menuitemClick,actionitemClick } from '@/slice/menuSlice';
@@ -53,6 +53,9 @@ const Menu = () =>
                     </div>
                     <div className= {styles.iconWrapper} onClick={() => handleActionItemClick(MENU_ITEMS.DOWNLOAD)}>
                         <FontAwesomeIcon icon={faFileArrowDown} className={styles.icon} />
+                    </div>
+                    <div className= {styles.iconWrapper} onClick={() => handleActionItemClick(MENU_ITEMS.UPLOAD)}>
+                        <FontAwesomeIcon icon={faFileArrowUp} className={styles.icon} />
                     </div>
                 </div>
             );

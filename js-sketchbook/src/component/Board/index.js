@@ -42,7 +42,25 @@ const Board = () => {
                 const imageData = drawHistory.current[historyPointer.current]
                 context.putImageData(imageData, 0, 0)
         }
-
+        else if (actionMenuItem === MENU_ITEMS.UPLOAD) {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = function(event) {
+                const file = event.target.files[0];
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        context.clearRect(0, 0, canvas.width, canvas.height);
+                        context.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            };
+            input.click();
+        }
         dispatch(actionitemClick(null))
      }, [actionMenuItem])
    
