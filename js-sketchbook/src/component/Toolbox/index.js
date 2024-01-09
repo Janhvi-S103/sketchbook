@@ -3,19 +3,23 @@ import { COLORS, MENU_ITEMS} from '@/constants'
 import cx from 'classnames'
 import { useSelector,useDispatch } from 'react-redux'
 import { changeColor,changeBrushSize,changeAlpha } from '@/slice/toolBoxSlice'
+import {socket} from '@/socket'
+
 const Toolbox = () => {
     const dispatch = useDispatch();
     const activeMenuItem= useSelector(state => state.menu.activeMenuItem)
     const showStrokeToolOptions= activeMenuItem === MENU_ITEMS.PENCIL || activeMenuItem === MENU_ITEMS.HIGHLIGHTER || activeMenuItem === MENU_ITEMS.MARKER;
     const showBrushToolOptions=activeMenuItem === MENU_ITEMS.PENCIL || activeMenuItem === MENU_ITEMS.HIGHLIGHTER || activeMenuItem === MENU_ITEMS.MARKER || activeMenuItem === MENU_ITEMS.ERASER;
     const showAlphaToolOptions=activeMenuItem === MENU_ITEMS.HIGHLIGHTER;
-    const {color} = useSelector((state) => state.toolbox[activeMenuItem])
+    const {color,size } = useSelector((state) => state.toolbox[activeMenuItem])
 
     const UpdateBrushSize = (e) => {
             dispatch(changeBrushSize ({item : activeMenuItem, size : e.target.value}))
+            socket.emit('changeConfig', {color, size: e.target.value })
     }
     const UpdateColor = (newcolor) => {
         dispatch(changeColor({item : activeMenuItem, color : newcolor}))
+        socket.emit('changeConfig', {color: newcolor,size })
     }
  const UpdateAlpha = (e) => {
     dispatch(changeAlpha ({item : activeMenuItem, alpha : e.target.value}))
