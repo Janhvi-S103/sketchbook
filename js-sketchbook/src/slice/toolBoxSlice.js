@@ -8,12 +8,11 @@ const initialState = {
     },
     [MENU_ITEMS.MARKER]: {
         color: COLORS.BLACK,
-        size: 3
+        size: 6
     },
     [MENU_ITEMS.HIGHLIGHTER]: {
         color: COLORS.YELLOW,
         size: 8,
-        alpha: 0.2
     },
     [MENU_ITEMS.ERASER]: {
         color: COLORS.WHITE,
