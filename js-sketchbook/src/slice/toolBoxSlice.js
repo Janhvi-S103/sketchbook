@@ -12,7 +12,7 @@ const initialState = {
     },
     [MENU_ITEMS.HIGHLIGHTER]: {
         color: COLORS.YELLOW,
-        size: 8,
+        size: 11,
     },
     [MENU_ITEMS.ERASER]: {
         color: COLORS.WHITE,

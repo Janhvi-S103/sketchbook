@@ -3,7 +3,7 @@ import { faPencil, faEraser, faRotateLeft, faRotateRight, faFileArrowDown,faHigh
 import styles from './index.module.css'
 import { MENU_ITEMS } from '@/constants';
 import { menuitemClick,actionitemClick } from '@/slice/menuSlice';
-import { handleActioItemClick } from '@/slice/menuSlice';
+import { handleActionItemClick } from '@/slice/menuSlice';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import cx from 'classnames';
@@ -25,10 +25,9 @@ const Menu = () =>
         const handleMenuClick = (itemName) => {
             dispatch(menuitemClick(itemName))
         }
-        const handleActioItemClick = (itemName) => {
+        const handleActionItemClick = (itemName) => {
             dispatch(actionitemClick(itemName))
         }
-   
     return (
                 <div className={styles.menuContainer}>
                     <div className= {cx(styles.iconWrapper, {[styles.active]:activeMenuItem === MENU_ITEMS.PENCIL})} onClick={ ()=> handleMenuClick(MENU_ITEMS.PENCIL)}>
@@ -43,17 +42,17 @@ const Menu = () =>
                     <div className= {styles.iconWrapper} onClick={ ()=> handleMenuClick(MENU_ITEMS.ERASER)}>
                         <FontAwesomeIcon icon={faEraser} className={styles.icon} />
                     </div>
-                    <div  className= {styles.iconWrapper} onClick={() => handleActioItemClick(MENU_ITEMS.UNDO)}>
+                    <div  className= {styles.iconWrapper} onClick={() => handleActionItemClick(MENU_ITEMS.UNDO)}>
                         <FontAwesomeIcon icon={faRotateLeft} className={styles.icon} />
                     </div>
-                    <div className= {styles.iconWrapper} onClick={() => handleActioItemClick(MENU_ITEMS.REDO)}>
+                    <div className= {styles.iconWrapper} onClick={() => handleActionItemClick(MENU_ITEMS.REDO)}>
                         <FontAwesomeIcon icon={faRotateRight} className={styles.icon} />
                     </div>
-                    <div className= {styles.iconWrapper}>
-                        <FontAwesomeIcon icon={faHandPointer} className={styles.icon} onClick={() => handleActioItemClick(MENU_ITEMS.HANDPOINTER)}/>
+                    <div className= {styles.iconWrapper} onClick={() => handleActionItemClick(MENU_ITEMS.HANDPOINTER)}>
+                        <FontAwesomeIcon icon={faHandPointer} className={styles.icon} />
                     </div>
-                    <div className= {styles.iconWrapper}>
-                        <FontAwesomeIcon icon={faFileArrowDown} className={styles.icon} onClick={() => handleActioItemClick(MENU_ITEMS.DOWNLOAD)}/>
+                    <div className= {styles.iconWrapper} onClick={() => handleActionItemClick(MENU_ITEMS.DOWNLOAD)}>
+                        <FontAwesomeIcon icon={faFileArrowDown} className={styles.icon} />
                     </div>
                 </div>
             );

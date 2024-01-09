@@ -35,7 +35,7 @@ const Toolbox = () => {
             
             <h4 className={styles.toolText}>Brush Size</h4>
             <div className={styles.itemContainer}>
-                <input type="range" min={1} max={10} step={1} onChange={UpdateBrushSize} />
+                <input type="range" min={1} max={15} step={1} onChange={UpdateBrushSize} />
             </div>
         </div>}
         

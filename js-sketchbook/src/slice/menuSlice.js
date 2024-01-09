@@ -12,6 +12,7 @@ export const menuSlice = createSlice({
             state.activeMenuItem = action.payload
         },
         actionitemClick: (state, action) => {
+            state.actionMenuItem = action.payload
             // Add your code here
         }
     }
